@@ -1,0 +1,64 @@
+<form version="1.1">
+  <init>
+    <set token="MAP_LAT">45</set>
+    <set token="MAP_LON">9</set>
+  </init>
+  <search id="base_ip">
+    <query>| makeresults
+          | eval Domain = "$form.Domain$"
+          | makemv delim="," Domain
+          | mvexpand Domain
+          | mx Domain $Control$ nocache="$form.NO_CACHE$"
+    </query>
+    <earliest>-24h@h</earliest>
+    <latest>now</latest>
+  </search>
+  <label>Demo MX Toolbox dashboard</label>ß
+  <description>Test dashboard for MX Toolbox commands</description>
+  <fieldset submitButton="false" autoRun="false"></fieldset>
+  <row>
+    <panel>
+      <title>Server IP or Domain Name Search</title>
+      <input type="text" token="Domain">
+        <label>Server IP or Domain Name</label>
+      </input>
+      <input type="dropdown" token="Control">
+        <label>Control</label>
+        <choice value="dns">DNS</choice>
+        <choice value="blacklist">BLACKLIST</choice>
+        <choice value="mx">MX</choice>
+        <default>dns</default>
+        <initialValue>dns</initialValue>
+        <prefix>action=</prefix>
+      </input>
+      <input type="radio" token="NO_CACHE">
+        <label>No cache</label>
+        <choice value="true">TRUE</choice>
+        <choice value="false">FALSE</choice>
+        <default>false</default>
+        <initialValue>false</initialValue>
+      </input>
+      <html>
+        <p>
+          <i>Comma to separate multiple IPs server or domain values</i>
+        </p>
+      </html>
+      <table>
+        <search base="base_ip">
+          <query>| table Domain Control Name Info AdditionalInfo Result RelatedIP ReportingNameServer MxReputation Timeout</query>
+        </search>
+        <option name="count">10</option>
+        <option name="drilldown">cell</option>
+        <option name="wrap">false</option>
+        <drilldown>
+          <condition match="isnull($CLICKED_SRC_IP$)">
+            <set token="CLICKED_SRC_IP">$row.src_ip$</set>
+          </condition>
+          <condition match="isnotnull($CLICKED_SRC_IP$)">
+            <unset token="CLICKED_SRC_IP"></unset>
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,23 @@
+<setup>
+    <block title="Add new API" endpoint="storage/passwords" entity="_new">
+     <input field="realm">
+            <label>Realm</label>
+            <type>text</type>
+        </input>
+        <input field="name">
+            <label>Label</label>
+            <type>text</type>
+        </input>
+        <input field="password">
+            <label>API Key</label>
+            <type>text</type>
+        </input>
+    </block>
+    <block title="Configured credentials (can be edited here)" endpoint="storage/passwords"  entity="*" mode="iter" enabled="true">
+        <input field="password">
+            <label>API label $realm$ $name$</label>
+            <type>text</type>
+        </input>
+    </block>
+
+</setup>
