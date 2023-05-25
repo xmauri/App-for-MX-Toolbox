@@ -1,32 +1,21 @@
-# Table of Contents
+## Introduction
 
--   [Introduction] (#introduction)
--   [Prerequisites] (#prerequisites)
--   [Installation] (#installation)
--   [Reference Material] (#reference-material)
--   [MX Toolbox] (#mx-toolbox)
--   [Commands] (#commands)
--   [Configuration] (#configuration)
--   [Demo] (#demo)
+This app is designed to integrating MX Toolbox feature with Splunk.
 
-# Introduction
-
-This README.md file provides documentation for the MX-Toolbox app. This app is designed to integrating MX Toolbox feature with Splunk.
-
-# Prerequisites
+## Prerequisites
 
 -   Python
 
-# Installation
+## Installation
 
 To install the MX-Toolbox app just unpack and deploy to the Splunk SH instance.
 
-# Reference Material
+## Reference Material
 
  - https://docs.splunk.com/Documentation/SCS/current/SearchReference/CustomCommandFunctions
 
 
-# MX Toolbox
+## MX Toolbox
 
 *Disclaimer: the app is not affiliated with MX Toolbox. It has been developed independently*
 
