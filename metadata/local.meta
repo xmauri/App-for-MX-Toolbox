@@ -1,13 +1,3 @@
 []
-access = read : [ admin, remote_user, splunk-sec-antipiracy, splunk-sec-is-superuser ], write : [ admin ]
-export = system
-version = 8.0.7
-modtime = 1638802257.537548000
-
-[app/install/install_source_checksum]
-version = 8.0.6
-modtime = 1606495910.178558000
-
-[views/demo]
-version = 8.0.6
-modtime = 1608628812.314521000
+access = read : [ * ], write : [ admin ]
+export=system
